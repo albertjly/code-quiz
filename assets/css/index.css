@@ -25,7 +25,7 @@ input {
   margin-top: 50px;
 }
 .container {
-  width: 1200px;
+  width: 1000px;
   margin: 0 auto;
   font-family: Verdana, Arial, Helvetica, sans-serif;
 }
@@ -68,7 +68,6 @@ input {
   font-size: 32px;
 }
 #quiz .container .quiz-start {
-  display: none;
   text-align: center;
 }
 #quiz .container .quiz-start h1 {
@@ -156,37 +155,6 @@ input {
   color: #99ccff;
   cursor: pointer;
 }
-#quiz .container .high-scores {
-  width: 80%;
-  margin: 0 auto;
-}
-#quiz .container .high-scores h2 {
-  margin: 10px 0;
-}
-#quiz .container .high-scores ul {
-  margin: 10px 0;
-}
-#quiz .container .high-scores ul li {
-  width: 50%;
-  height: 30px;
-  line-height: 30px;
-  margin: 5px 0;
-}
-#quiz .container .high-scores ul li:nth-child(2n-1) {
-  background-color: #c0d8ff;
-}
-#quiz .container .high-scores button {
-  height: 36px;
-  background-color: #000091;
-  color: #99ccff;
-  font-size: 20px;
-  width: 100px;
-  border-radius: 10px;
-}
-#quiz .container .high-scores button:last-child {
-  width: 200px;
-  margin-left: 5px;
-}
 /*************************quiz-end************************/
 /************************result-start***********************/
 #result .container {
@@ -198,4 +166,41 @@ input {
   color: #ccc;
 }
 /*************************result-end************************/
+#high-scores {
+  display: none;
+  margin-top: 180px;
+}
+#high-scores .container .high-scores {
+  width: 80%;
+  margin: 0 auto;
+}
+#high-scores .container .high-scores h2 {
+  margin: 10px 0;
+}
+#high-scores .container .high-scores ul {
+  margin: 10px 0;
+}
+#high-scores .container .high-scores ul li {
+  width: 40%;
+  height: 40px;
+  line-height: 40px;
+  margin: 5px 0;
+  padding-left: 10px;
+}
+#high-scores .container .high-scores ul li:nth-child(2n-1) {
+  background-color: #c0d8ff;
+}
+#high-scores .container .high-scores button {
+  height: 36px;
+  background-color: #000091;
+  color: #99ccff;
+  font-size: 20px;
+  width: 100px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+#high-scores .container .high-scores button:last-child {
+  width: 200px;
+  margin-left: 5px;
+}
 /*# sourceMappingURL=index.css.map */

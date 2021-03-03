@@ -13,21 +13,21 @@
         <section id="head">
             <div class="container">
                 <div class="view-high-scores fl">
-                    <a href="#">View high scores</a>
+                    <a href="#" id="view-high-scores">View high scores</a>
                 </div>
                 <div class="timer fr">
-                    <span>Time: <b class="timer-num">0</b></span>
+                    <span>Time: <b id="timer-num">0</b></span>
                 </div>
             </div>
         </section>
         <!--quiz-->
         <section id="quiz">
             <div class="container">
-                <div class="quiz-start">
+                <div class="quiz-start" id="quiz-start">
                     <h1>Coding Quiz Challenge</h1>
                     <p>Try to answer the following code-related questions with in the time limit.</p>
                     <p>Keep in mind that incorrect answers will penalize your score/time by ten seconds!</p>
-                    <button type="button">Start Quiz</button>
+                    <button type="button" id="start-quiz">Start Quiz</button>
                 </div>
                 <div class="quiz-question">
                     <h2 class="quiz-question-title">1. Inside which HTML element do we put the JavaScript?</h2>
@@ -72,26 +72,31 @@
                     <input type="text" class="fl">
                     <button type="button" class="fl">Submit</button>
                 </div>
-                <div class="high-scores">
-                    <h2>High scores</h2>
-                    <ul>
-                        <li>1. AA - 80</li>
-                        <li>2.</li>
-                        <li>3.</li>
-                    </ul>
-                    <button type="button">Go back</button>
-                    <button type="button">Clear high scores</button>
-
-                </div>
             </div>
         </section>
         <!--result-->
         <section id="result">
             <div class="container">
-                <i>Correct!</i>
+                <i class="current">Correct!</i>
                 <i>Wrong!</i>
             </div>
         </section>
+    </div>
+
+
+    <div id="high-scores">
+        <div class="container">
+            <div class="high-scores">
+                <h2>High scores</h2>
+                <ul>
+                    <li>1. <span>AA - 80</span></li>
+                    <li>2. <span>BB - 90</span></li>
+                    <li>3. <span>CC - 60</span></li>
+                </ul>
+                <button type="button" class="go-back">Go back</button>
+                <button type="button" class="clear">Clear high scores</button>
+            </div>
+        </div>
     </div>
 
     <script src="./assets/js/index.js"></script>

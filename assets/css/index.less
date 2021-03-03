@@ -30,7 +30,7 @@ button, input{
 }
 
 .container{
-  width: 1200px;
+  width: 1000px;
   //height: 1000px;
   margin: 0 auto;
   font-family: Verdana, Arial, Helvetica, sans-serif;
@@ -82,7 +82,7 @@ button, input{
       font-size: 32px;
     }
     .quiz-start{
-      display: none;
+      //display: none;
       text-align: center;
       h1{
         margin: 20px;
@@ -167,37 +167,6 @@ button, input{
         cursor: pointer;
       }
     }
-    .high-scores{
-      width: 80%;
-      margin: 0 auto;
-      h2{
-        margin: 10px 0;
-      }
-      ul{
-        margin: 10px 0;
-        li{
-          width: 50%;
-          height: 30px;
-          line-height: 30px;
-          margin: 5px 0;
-          &:nth-child(2n-1){
-            background-color: @whiteBlue;
-          }
-        }
-      }
-      button{
-        height: 36px;
-        background-color: @darkBlue;
-        color: @lightBlue;
-        font-size: 20px;
-        width: 100px;
-        border-radius: 10px;
-        &:last-child{
-          width: 200px;
-          margin-left: 5px;
-        }
-      }
-    }
   }
 }
 /*************************quiz-end************************/
@@ -217,3 +186,44 @@ button, input{
   }
 }
 /*************************result-end************************/
+
+#high-scores{
+  display: none;
+  margin-top: 180px;
+  .container{
+    .high-scores{
+      width: 80%;
+      margin: 0 auto;
+      //overflow: auto;
+      h2{
+        margin: 10px 0;
+      }
+      ul{
+        margin: 10px 0;
+        li{
+          width: 40%;
+          height: 40px;
+          line-height: 40px;
+          margin: 5px 0;
+          padding-left: 10px;
+          &:nth-child(2n-1){
+            background-color: @whiteBlue;
+          }
+        }
+      }
+      button{
+        height: 36px;
+        background-color: @darkBlue;
+        color: @lightBlue;
+        font-size: 20px;
+        width: 100px;
+        border-radius: 10px;
+        cursor: pointer;
+        &:last-child{
+          width: 200px;
+          margin-left: 5px;
+        }
+      }
+    }
+  }
+}
