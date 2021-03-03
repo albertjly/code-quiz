@@ -1,0 +1,219 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+a{
+  text-decoration: none;
+  color: #000;
+}
+
+ul,ol{
+  list-style: none;
+}
+
+button, input{
+  outline: none;
+}
+
+.fl{
+  float: left;
+}
+
+.fr{
+  float: right;
+}
+
+#quiz-challenge{
+  margin-top: 50px;
+}
+
+.container{
+  width: 1200px;
+  //height: 1000px;
+  margin: 0 auto;
+  font-family: Verdana, Arial, Helvetica, sans-serif;
+}
+
+@darkBlue: #000091;
+@dimeBlue: #0043af;
+@lightBlue: #99ccff;
+@whiteBlue: #c0d8ff;
+
+
+/************************head-start***********************/
+#head{
+  //background-color: yellow;
+  width: 100%;
+  height: 40px;
+  .view-high-scores, .timer{
+    line-height: 40px;
+    font-size: 18px;
+    font-weight: bold;
+  }
+  .view-high-scores{
+    //background-color: red;
+    margin-left: 20px;
+    a{
+      color: @darkBlue;
+    }
+  }
+  .timer{
+    //background-color: cyan;
+    margin-right: 20px;
+    span, b{
+      color: @darkBlue;
+    }
+  }
+}
+/*************************head-end************************/
+
+/************************quiz-start***********************/
+#quiz{
+  min-height: 500px;
+  //overflow: auto;
+  .container{
+    margin-top: 100px;
+    h1{
+      font-size: 40px;
+    }
+    h2{
+      font-size: 32px;
+    }
+    .quiz-start{
+      display: none;
+      text-align: center;
+      h1{
+        margin: 20px;
+      }
+      p{
+        margin: 5px;
+        font-size: 20px;
+      }
+      button{
+        margin-top: 20px;
+        width: 120px;
+        height: 40px;
+        font-size: 20px;
+        background-color: @darkBlue;
+        color: @lightBlue;
+        border-radius: 10px;
+        text-decoration: none;
+        cursor: pointer;
+      }
+    }
+    .quiz-question{
+      display: none;
+      width: 80%;
+      margin: 0 auto;
+      h2{
+        margin: 20px;
+        font-size: 28px;
+      }
+      ul{
+        margin: 20px;
+        li{
+          width: 225px;
+          height: 40px;
+          background-color: @darkBlue;
+          border-radius: 10px;
+          margin: 7px;
+          color: #fff;
+          font-size: 20px;
+          //font-weight: bold;
+          line-height: 40px;
+          padding-left: 15px;
+          padding-right: 5px;
+          &:hover{
+            background-color: @dimeBlue;
+            box-shadow: 2px 2px 1px #333333;
+            cursor: pointer;
+            font-weight: 600;
+          }
+          &:active{
+            background-color: @lightBlue;
+          }
+        }
+      }
+    }
+    .quiz-submit{
+      display: none;
+      width: 80%;
+      margin: 0 auto;
+      h1, p, input, button{
+        margin: 10px 20px;
+      }
+      p, input{
+        font-size: 30px;
+      }
+      p.fl{
+        margin-right: 5px;
+      }
+      input{
+        margin-left: 5px;
+        margin-right: 5px;
+        border-radius: 5px;
+        padding-left: 10px;
+      }
+      button{
+        margin-left: 5px;
+        width: 100px;
+        height: 40px;
+        font-size: 20px;
+        border-radius: 10px;
+        background-color: @darkBlue;
+        color: @lightBlue;
+        cursor: pointer;
+      }
+    }
+    .high-scores{
+      width: 80%;
+      margin: 0 auto;
+      h2{
+        margin: 10px 0;
+      }
+      ul{
+        margin: 10px 0;
+        li{
+          width: 50%;
+          height: 30px;
+          line-height: 30px;
+          margin: 5px 0;
+          &:nth-child(2n-1){
+            background-color: @whiteBlue;
+          }
+        }
+      }
+      button{
+        height: 36px;
+        background-color: @darkBlue;
+        color: @lightBlue;
+        font-size: 20px;
+        width: 100px;
+        border-radius: 10px;
+        &:last-child{
+          width: 200px;
+          margin-left: 5px;
+        }
+      }
+    }
+  }
+}
+/*************************quiz-end************************/
+
+/************************result-start***********************/
+#result{
+  //background-color: pink;
+  //width: 100%;
+  //height: 40px;
+  .container{
+    border-top: 1px solid #000;
+    i{
+      font-size: 40px;
+      font-weight: bolder;
+      color: #ccc;
+    }
+  }
+}
+/*************************result-end************************/

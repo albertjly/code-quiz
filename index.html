@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Code-Quiz</title>
+    <link rel="stylesheet" href="./assets/css/index.css">
+</head>
+<body>
+    <div id="quiz-challenge">
+        <!--head-->
+        <section id="head">
+            <div class="container">
+                <div class="view-high-scores fl">
+                    <a href="#">View high scores</a>
+                </div>
+                <div class="timer fr">
+                    <span>Time: <b class="timer-num">0</b></span>
+                </div>
+            </div>
+        </section>
+        <!--quiz-->
+        <section id="quiz">
+            <div class="container">
+                <div class="quiz-start">
+                    <h1>Coding Quiz Challenge</h1>
+                    <p>Try to answer the following code-related questions with in the time limit.</p>
+                    <p>Keep in mind that incorrect answers will penalize your score/time by ten seconds!</p>
+                    <button type="button">Start Quiz</button>
+                </div>
+                <div class="quiz-question">
+                    <h2 class="quiz-question-title">1. Inside which HTML element do we put the JavaScript?</h2>
+                    <ul>
+                        <li class="current">&lt;script&gt;</li>
+                        <li>&lt;js&gt;</li>
+                        <li>&lt;scripting&gt;</li>
+                        <li>&lt;javascript&gt;</li>
+                    </ul>
+                </div>
+                <!--<div class="quiz-question">
+                    <h2 class="quiz-question-title">2. Select the property that is used to create spacing between HTML elements?</h2>
+                    <ul>
+                        <li>margin</li>
+                        <li>spacing</li>
+                        <li>border</li>
+                        <li>padding</li>
+                    </ul>
+                </div>-->
+                <!--<div class="quiz-question">
+                    <h2 class="quiz-question-title">3. In CSS,select the property used to set the background color of an image?</h2>
+                    <ul>
+                        <li>color:background</li>
+                        <li>background:color</li>
+                        <li>color</li>
+                        <li>background-color</li>
+                    </ul>
+                </div>-->
+                <!--<div class="quiz-question">
+                    <h2 class="quiz-question-title">4. In CSS,Select the property used to set the spacing in between lines of text?</h2>
+                    <ul>
+                        <li>letter-spacing</li>
+                        <li>spacing</li>
+                        <li>line-height</li>
+                        <li>line-spacing</li>
+                    </ul>
+                </div>-->
+                <div class="quiz-submit">
+                    <h1>All Done!</h1>
+                    <p>Your final score is <b>0</b>.</p>
+                    <p class="fl">Enter initial:</p>
+                    <input type="text" class="fl">
+                    <button type="button" class="fl">Submit</button>
+                </div>
+                <div class="high-scores">
+                    <h2>High scores</h2>
+                    <ul>
+                        <li>1. AA - 80</li>
+                        <li>2.</li>
+                        <li>3.</li>
+                    </ul>
+                    <button type="button">Go back</button>
+                    <button type="button">Clear high scores</button>
+
+                </div>
+            </div>
+        </section>
+        <!--result-->
+        <section id="result">
+            <div class="container">
+                <i>Correct!</i>
+                <i>Wrong!</i>
+            </div>
+        </section>
+    </div>
+</body>
+</html>
