@@ -159,11 +159,12 @@ function createNewLi() {
     return  document.createElement('li');
 }
 
-var timer = 5;
+var timer = 40;
 var timerCountDown = document.getElementById('timer-num');
 var intervalID;
+var quizSubmit = document.getElementById('quiz-submit');
 function resetTimer() {
-    timer = 5;
+    timer = 40;
     timerCountDown.textContent = timer;
     clearInterval(intervalID);
     intervalID = setInterval(function () {
@@ -171,10 +172,14 @@ function resetTimer() {
         timerCountDown.textContent = timer;
         if (timer <= 0) {
             timer = 0;
-            // alert('Time Out!');
             // timerCountDown.textContent = timer;
             clearInterval(intervalID);
+            alert('Time Out!');
             // quizQuestion.style.display = 'none';
+        }
+        if (quizSubmit.style.display === 'block'){
+            timerCountDown.textContent = "0";
+            clearInterval(intervalID);
         }
     }, 1000);
 }
