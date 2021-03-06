@@ -100,6 +100,10 @@ input {
 #quiz .container .quiz-question ul {
   margin: 20px;
 }
+#quiz .container .quiz-question ul .current {
+  background-color: #99ccff;
+  font-weight: bolder;
+}
 #quiz .container .quiz-question ul li {
   width: 225px;
   height: 40px;
