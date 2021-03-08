@@ -127,7 +127,7 @@ input {
 }
 #quiz .container .quiz-submit {
   display: none;
-  width: 80%;
+  width: 92%;
   margin: 0 auto;
 }
 #quiz .container .quiz-submit h1,
@@ -159,12 +159,17 @@ input {
   color: #99ccff;
   cursor: pointer;
 }
+#quiz .container .quiz-submit button:last-child {
+  width: 170px;
+  background-color: #99ccff;
+  color: #000091;
+  font-weight: bolder;
+}
 /*************************quiz-end************************/
 /************************result-start***********************/
-#result .container {
-  border-top: 1px solid #000;
-}
 #result .container i {
+  border-top: 1px solid #000;
+  display: none;
   font-size: 40px;
   font-weight: bolder;
   color: #ccc;

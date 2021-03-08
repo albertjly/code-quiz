@@ -3,7 +3,7 @@ window.addEventListener('load', function (ev) {
     var highScores = document.getElementById('high-scores');
     var goBack = document.querySelector('.go-back');
     var quizChallenge = document.getElementById('quiz-challenge');
-    var quizContainer = document.querySelector('#quiz .container');
+
     var questionArr = [
         {
             question: '1. Inside which HTML element do we put the JavaScript?',
@@ -15,8 +15,8 @@ window.addEventListener('load', function (ev) {
         },
         {
             question: '2. Select the property that is used to create spacing between HTML elements?',
-            answer1: 'margin',
-            answer2: 'spacing',
+            answer1: 'spacing',
+            answer2: 'margin',
             answer3: 'border',
             answer4: 'padding',
             corAns: 'margin'
@@ -44,59 +44,130 @@ window.addEventListener('load', function (ev) {
     viewHighScores.addEventListener('click', function (ev1) {
         highScores.style.display = 'block';
         quizChallenge.style.display = 'none';
+        // var textInput = quizSubmit.getElementsByTagName('input')[0];
+        // var submitBtn = quizSubmit.getElementsByTagName('button')[0];
+        var highScoreList = document.getElementById('high-score-list');
+        // var initAndScore = textInput.value + ' - ' + scoreNum.textContent;
+        var scoreRecord = [];
+        if (localStorage.getItem('scoreRecord')) {
+            scoreRecord = JSON.parse(localStorage.getItem('scoreRecord'));
+        }
+        // scoreRecord.unshift(initAndScore);
+        // localStorage.setItem('scoreRecord', JSON.stringify(scoreRecord));
+
+        for (var i = 0; i < scoreRecord.length; i++) {
+            var newLi = createNewLi();
+            newLi.textContent = scoreRecord[i];
+            highScoreList.appendChild(newLi);
+        }
+        scoreRecord.filter(onlyUnique);
     });
+
+    function onlyUnique(value, index, self) {
+        return self.indexOf(value) === index;
+    }
 
     goBack.addEventListener('click', function (evt) {
         quizChallenge.style.display = 'block';
         highScores.style.display = 'none';
     });
 
-    var highScoresSpan = highScores.querySelectorAll('span');
-    var clearHighScores = document.querySelector('.clear');
 
-    clearHighScores.addEventListener('click', function (evt) {
-        for (var i = 0; i < highScoresSpan.length; i++) {
-            highScoresSpan[i].textContent = '';
-        }
-    });
-
-
-    var startQuiz = document.getElementById('start-quiz');
+    var startQuizBtn = document.getElementById('start-quiz');
     var quizStart = document.getElementById('quiz-start');
     var quizQuestion = document.querySelector('.quiz-question');
-    
-    startQuiz.addEventListener('click', function (ev1) {
+
+    startQuizBtn.addEventListener('click', function (ev1) {
         quizStart.style.display = 'none';
         quizQuestion.style.display = 'block';
 
         resetTimer();
     });
+
     var questionLi = document.querySelectorAll('.quiz-question ul li');
     var timeoutID;
     var quizSubmit = document.getElementById('quiz-submit');
+
+    var score = 0;
+    var correct = document.getElementById('correct');
+    var wrong = document.getElementById('wrong');
+
+    var scoreNum = document.getElementById('score');
     function questionChange() {
         var index = 0;
         questionLi.forEach(function (li) {
+            correct.style.display = 'none';
+            wrong.style.display = 'none';
             li.addEventListener('click', function () {
                 li.style.backgroundColor = "#99ccff";
-                li.classList.add('current');
+                // li.classList.add('current');
+                if (li.innerHTML === questionArr[index].corAns) {
+                    score++;
+                    correct.style.display = 'block';
+                } else {
+                    wrong.style.display = 'block';
+                }
+
+                scoreNum.textContent = score * 25;
+
                 timeoutID = setTimeout(function () {
-                    if (index >= 3){
+                    if (index >= 3) {
                         quizQuestion.style.display = 'none';
                         quizSubmit.style.display = 'block';
+                        correct.style.display = 'none';
+                        wrong.style.display = 'none';
                     } else {
                         index++;
                     }
-                    // quizQuestion.style.display = 'none';
+
                     renderQuestion(index);
                     clearTimeout(timeoutID);
                 }, 1000);
+
             });
 
         });
-
     }
     questionChange();
+
+    var textInput = quizSubmit.getElementsByTagName('input')[0];
+    var submitBtn = quizSubmit.getElementsByTagName('button')[0];
+    var highScoreList = document.getElementById('high-score-list');
+    submitBtn.addEventListener('click', function () {
+        var initAndScore = textInput.value + ' - ' + scoreNum.textContent;
+        var newLi = createNewLi();
+        newLi.textContent = initAndScore;
+        highScoreList.appendChild(newLi);
+        var scoreRecord = [];
+        if (localStorage.getItem('scoreRecord')) {
+            scoreRecord = JSON.parse(localStorage.getItem('scoreRecord'));
+        }
+        console.log(scoreRecord);
+        scoreRecord.unshift(initAndScore);
+        scoreRecord = scoreRecord.filter(onlyUnique);
+        localStorage.setItem('scoreRecord', JSON.stringify(scoreRecord));
+        alert("You're all set!");
+    });
+
+    var oneMoreTimeBtn = quizSubmit.getElementsByTagName('button')[1];
+    oneMoreTimeBtn.addEventListener('click', function () {
+        quizSubmit.style.display = 'none';
+        quizStart.style.display = 'block';
+    });
+
+
+
+    // clearHighScores
+
+    var clearHighScores = document.querySelector('.clear');
+
+    clearHighScores.addEventListener('click', function (evt) {
+        var highScoresLi = highScores.querySelectorAll('li');
+        for (var i = 0; i < highScoresLi.length; i++) {
+            highScoresLi[i].textContent = '';
+        }
+    });
+
 
 
 
@@ -121,11 +192,15 @@ window.addEventListener('load', function (ev) {
         // console.log(createDiv.setAttribute('class', 'quiz-question'));
     }
     */
-
+    /**
+     *
+     * @param {String}index
+     */
     function renderQuestion(index) {
         var quizQuestionTitle = quizQuestion.querySelector('.quiz-question-title');
         var allLis = quizQuestion.querySelectorAll('li');
-
+        correct.style.display = 'none';
+        wrong.style.display = 'none';
         quizQuestionTitle.textContent = questionArr[index].question;
 
         allLis.forEach(function (li) {
@@ -144,6 +219,7 @@ window.addEventListener('load', function (ev) {
 
 
 
+
 });
 
 /**
@@ -156,10 +232,10 @@ function createTag(tagName) {
 }
 
 function createNewLi() {
-    return  document.createElement('li');
+    return document.createElement('li');
 }
 
-var timer = 40;
+var timer;
 var timerCountDown = document.getElementById('timer-num');
 var intervalID;
 var quizSubmit = document.getElementById('quiz-submit');
@@ -177,7 +253,7 @@ function resetTimer() {
             alert('Time Out!');
             // quizQuestion.style.display = 'none';
         }
-        if (quizSubmit.style.display === 'block'){
+        if (quizSubmit.style.display === 'block') {
             timerCountDown.textContent = "0";
             clearInterval(intervalID);
         }

@@ -67,18 +67,19 @@
                 </div>-->
                 <div class="quiz-submit" id="quiz-submit">
                     <h1>All Done!</h1>
-                    <p>Your final score is <b>0</b>.</p>
+                    <p>Your final score is <b id="score">0</b>.</p>
                     <p class="fl">Enter initial:</p>
                     <input type="text" class="fl">
                     <button type="button" class="fl">Submit</button>
+                    <button type="button" class="fr">One more time!</button>
                 </div>
             </div>
         </section>
         <!--result-->
         <section id="result">
             <div class="container">
-                <i class="current">Correct!</i>
-                <i>Wrong!</i>
+                <i id="correct">Correct!</i>
+                <i id="wrong">Wrong!</i>
             </div>
         </section>
     </div>
@@ -88,10 +89,8 @@
         <div class="container">
             <div class="high-scores">
                 <h2>High scores</h2>
-                <ul>
-                    <li>1. <span>AA - 80</span></li>
-                    <li>2. <span>BB - 90</span></li>
-                    <li>3. <span>CC - 60</span></li>
+                <ul id="high-score-list">
+                    <!-- <li>asdfasdf</li> -->
                 </ul>
                 <button type="button" class="go-back">Go back</button>
                 <button type="button" class="clear">Clear high scores</button>
