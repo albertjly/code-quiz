@@ -39,28 +39,37 @@ window.addEventListener('load', function (ev) {
         }
     ];
 
-
+    function renderHighScores(){
+        highScoreList.innerHTML = '';
+        var recordSet = JSON.parse(localStorage.getItem('scoreRecord'));
+        recordSet.forEach(function(ele){
+            var newLi = createNewLi();
+            newLi.textContent = ele;
+            highScoreList.appendChild(newLi);
+        });
+    }
 
     viewHighScores.addEventListener('click', function (ev1) {
+        ev1.preventDefault();
         highScores.style.display = 'block';
         quizChallenge.style.display = 'none';
         // var textInput = quizSubmit.getElementsByTagName('input')[0];
         // var submitBtn = quizSubmit.getElementsByTagName('button')[0];
-        var highScoreList = document.getElementById('high-score-list');
+        // var highScoreList = document.getElementById('high-score-list');
         // var initAndScore = textInput.value + ' - ' + scoreNum.textContent;
-        var scoreRecord = [];
-        if (localStorage.getItem('scoreRecord')) {
-            scoreRecord = JSON.parse(localStorage.getItem('scoreRecord'));
-        }
-        // scoreRecord.unshift(initAndScore);
-        // localStorage.setItem('scoreRecord', JSON.stringify(scoreRecord));
-
-        for (var i = 0; i < scoreRecord.length; i++) {
-            var newLi = createNewLi();
-            newLi.textContent = scoreRecord[i];
-            highScoreList.appendChild(newLi);
-        }
-        scoreRecord.filter(onlyUnique);
+        // var scoreRecord = [];
+        // if (localStorage.getItem('scoreRecord')) {
+            // }
+            // scoreRecord.unshift(initAndScore);
+            // localStorage.setItem('scoreRecord', JSON.stringify(scoreRecord));
+            
+            // for (var i = 0; i < scoreRecord.length; i++) {
+                //     var newLi = createNewLi();
+                //     newLi.textContent = scoreRecord[i];
+                //     highScoreList.appendChild(newLi);
+                // }
+                // scoreRecord.filter(onlyUnique);
+        renderHighScores();
     });
 
     function onlyUnique(value, index, self) {
@@ -135,24 +144,28 @@ window.addEventListener('load', function (ev) {
     var highScoreList = document.getElementById('high-score-list');
     submitBtn.addEventListener('click', function () {
         var initAndScore = textInput.value + ' - ' + scoreNum.textContent;
-        var newLi = createNewLi();
-        newLi.textContent = initAndScore;
-        highScoreList.appendChild(newLi);
         var scoreRecord = [];
         if (localStorage.getItem('scoreRecord')) {
             scoreRecord = JSON.parse(localStorage.getItem('scoreRecord'));
         }
-        console.log(scoreRecord);
+        // console.log(scoreRecord);
+
         scoreRecord.unshift(initAndScore);
-        scoreRecord = scoreRecord.filter(onlyUnique);
-        localStorage.setItem('scoreRecord', JSON.stringify(scoreRecord));
+        // scoreRecord = scoreRecord.filter(onlyUnique);
+        var recordSet = [...new Set(scoreRecord)];
+        localStorage.setItem('scoreRecord', JSON.stringify(recordSet));
+
+        renderHighScores();
+
         alert("You're all set!");
     });
 
     var oneMoreTimeBtn = quizSubmit.getElementsByTagName('button')[1];
     oneMoreTimeBtn.addEventListener('click', function () {
-        quizSubmit.style.display = 'none';
-        quizStart.style.display = 'block';
+        // quizSubmit.style.display = 'none';
+        // quizStart.style.display = 'block';
+
+        window.location.reload();
     });
 
 
@@ -162,10 +175,9 @@ window.addEventListener('load', function (ev) {
     var clearHighScores = document.querySelector('.clear');
 
     clearHighScores.addEventListener('click', function (evt) {
-        var highScoresLi = highScores.querySelectorAll('li');
-        for (var i = 0; i < highScoresLi.length; i++) {
-            highScoresLi[i].textContent = '';
-        }
+        // localStorage.clear();
+        localStorage.setItem('scoreRecord', JSON.stringify([]));
+        renderHighScores();
     });
 
 
