@@ -134,9 +134,13 @@ window.addEventListener('load', function (ev) {
                     wrong.style.display = 'block';
                     timer -= 5;
                 }
-                // console.log(timer);
 
-                scoreNum.textContent = score * parseInt(80 / questionArr.length) + parseInt(timer / 5);
+                // if your answers are all wrong, you'll get 0
+                if (score === 0){
+                    scoreNum.textContent = 0;
+                }else {
+                    scoreNum.textContent = score * parseInt(80 / questionArr.length) + parseInt(timer / 5);
+                }
 
                 timeoutID = setTimeout(function () {
                     if (index >= questionArr.length - 1) {
