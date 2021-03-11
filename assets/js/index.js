@@ -127,6 +127,7 @@ window.addEventListener('load', function (ev) {
             li.addEventListener('click', function () {
                 li.style.backgroundColor = "#99ccff";
                 // li.classList.add('current');
+                // when the answer is correct, the correct part shows and score +1. when get the wrong answer, the wrong part shows and timer -5
                 if (li.innerHTML === questionArr[index].corAns) {
                     score++;
                     correct.style.display = 'block';
@@ -142,6 +143,8 @@ window.addEventListener('load', function (ev) {
                     scoreNum.textContent = score * parseInt(80 / questionArr.length) + parseInt(timer / 5);
                 }
 
+                // set a timeout for every question
+                clearTimeout(timeoutID);
                 timeoutID = setTimeout(function () {
                     if (index >= questionArr.length - 1) {
                         quizQuestion.style.display = 'none';
@@ -168,12 +171,12 @@ window.addEventListener('load', function (ev) {
     submitBtn.addEventListener('click', function () {
         var initAndScore = textInput.value + ' - ' + scoreNum.textContent;
 
-
         var scoreRecord = [];
         if (localStorage.getItem('scoreRecord')) {
             scoreRecord = JSON.parse(localStorage.getItem('scoreRecord'));
         }
 
+        // if someone type nothing or just space, will alert him to type.
         if (textInput.value.trim() === ''){
             alert('Please type something!');
         }else {
@@ -195,19 +198,16 @@ window.addEventListener('load', function (ev) {
 
 
     // clearHighScores
-
     var clearHighScores = document.querySelector('.clear');
-
     clearHighScores.addEventListener('click', function (evt) {
         // localStorage.clear();
         localStorage.setItem('scoreRecord', JSON.stringify([]));
         renderHighScores();
     });
 
-
     /**
      *
-     * @param {String}index
+     * @param {Number}index
      */
     function renderQuestion(index) {
         var quizQuestionTitle = quizQuestion.querySelector('.quiz-question-title');
@@ -230,15 +230,6 @@ window.addEventListener('load', function (ev) {
 
 });
 
-/**
- * 
- * @param {String} tagName 
- */
-
-function createTag(tagName) {
-    return document.createElement(tagName);
-}
-
 function createNewLi() {
     return document.createElement('li');
 }
@@ -250,6 +241,7 @@ var quizSubmit = document.getElementById('quiz-submit');
 function resetTimer() {
     timer = 15 * questionArr.length;
     timerCountDown.textContent = timer;
+
     clearInterval(intervalID);
     intervalID = setInterval(function () {
         timer--;
@@ -257,11 +249,10 @@ function resetTimer() {
         
         if (timer <= 0) {
             timer = 0;
-            // timerCountDown.textContent = timer;
             clearInterval(intervalID);
             alert('Time Out!');
-            // quizQuestion.style.display = 'none';
         }
+        // submit page shows up, clear the interval
         if (quizSubmit.style.display === 'block') {
             timerCountDown.textContent = "0";
             clearInterval(intervalID);
