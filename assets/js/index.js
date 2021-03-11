@@ -1,43 +1,75 @@
+var questionArr = [
+    {
+        question: '1. Inside which HTML element do we put the JavaScript?',
+        answer1: '&lt;script&gt;',
+        answer2: '&lt;js&gt;',
+        answer3: '&lt;scripting&gt;',
+        answer4: '&lt;javascript&gt;',
+        corAns: '&lt;script&gt;'
+    },
+    {
+        question: '2. Select the property that is used to create spacing between HTML elements?',
+        answer1: 'spacing',
+        answer2: 'margin',
+        answer3: 'border',
+        answer4: 'padding',
+        corAns: 'margin'
+    },
+    {
+        question: '3. In CSS,select the property used to set the background color of an image?',
+        answer1: 'color:background',
+        answer2: 'background:color',
+        answer3: 'color',
+        answer4: 'background-color',
+        corAns: 'background-color'
+    },
+    {
+        question: '4. In CSS,Select the property used to set the spacing in between lines of text?',
+        answer1: 'letter-spacing',
+        answer2: 'spacing',
+        answer3: 'line-height',
+        answer4: 'line-spacing',
+        corAns: 'line-height'
+    },
+    {
+        question: '5. Select the option to make a list that lists the items with bullets?',
+        answer1: 'Dl',
+        answer2: 'Ul',
+        answer3: 'List',
+        answer4: 'Ol',
+        corAns: 'Ul'
+    },
+    {
+        question: '6. For users that use the tab key to navigate websites, what property represents this way of moving from one element to another?',
+        answer1: 'a:link',
+        answer2: 'a:active',
+        answer3: 'a:focus',
+        answer4: 'a:visited',
+        corAns: 'a:focus'
+    },
+    {
+        question: '7. Which HTML attribute specifies an alternate text for an image, if the image cannot be displayed?',
+        answer1: 'alt',
+        answer2: 'title',
+        answer3: 'src',
+        answer4: 'class',
+        corAns: 'alt'
+    },
+    {
+        question: '8. Which event occurs when the user clicks on an HTML element?',
+        answer1: 'clickOn',
+        answer2: 'onClick',
+        answer3: 'onmouseover',
+        answer4: 'onclick',
+        corAns: 'onclick'
+    }
+];
+
 window.addEventListener('load', function (ev) {
     var viewHighScores = document.getElementById('view-high-scores');
     var highScores = document.getElementById('high-scores');
     var goBack = document.querySelector('.go-back');
     var quizChallenge = document.getElementById('quiz-challenge');
-
-    var questionArr = [
-        {
-            question: '1. Inside which HTML element do we put the JavaScript?',
-            answer1: '&lt;script&gt;',
-            answer2: '&lt;js&gt;',
-            answer3: '&lt;scripting&gt;',
-            answer4: '&lt;javascript&gt;',
-            corAns: '&lt;script&gt;'
-        },
-        {
-            question: '2. Select the property that is used to create spacing between HTML elements?',
-            answer1: 'spacing',
-            answer2: 'margin',
-            answer3: 'border',
-            answer4: 'padding',
-            corAns: 'margin'
-        },
-        {
-            question: '3. In CSS,select the property used to set the background color of an image?',
-            answer1: 'color:background',
-            answer2: 'background:color',
-            answer3: 'color',
-            answer4: 'background-color',
-            corAns: 'background-color'
-        },
-        {
-            question: '4. In CSS,Select the property used to set the spacing in between lines of text?',
-            answer1: 'letter-spacing',
-            answer2: 'spacing',
-            answer3: 'line-height',
-            answer4: 'line-spacing',
-            corAns: 'line-height'
-        }
-    ];
 
     function renderHighScores(){
         highScoreList.innerHTML = '';
@@ -104,10 +136,10 @@ window.addEventListener('load', function (ev) {
                 }
                 // console.log(timer);
 
-                scoreNum.textContent = score * 25 + parseInt(timer / 5);
+                scoreNum.textContent = score * parseInt(80 / questionArr.length) + parseInt(timer / 5);
 
                 timeoutID = setTimeout(function () {
-                    if (index >= 3) {
+                    if (index >= questionArr.length - 1) {
                         quizQuestion.style.display = 'none';
                         quizSubmit.style.display = 'block';
                         correct.style.display = 'none';
@@ -118,7 +150,7 @@ window.addEventListener('load', function (ev) {
 
                     renderQuestion(index);
                     clearTimeout(timeoutID);
-                }, 1000);
+                }, 800);
 
             });
 
@@ -206,7 +238,7 @@ var timerCountDown = document.getElementById('timer-num');
 var intervalID;
 var quizSubmit = document.getElementById('quiz-submit');
 function resetTimer() {
-    timer = 60;
+    timer = 15 * questionArr.length;
     timerCountDown.textContent = timer;
     clearInterval(intervalID);
     intervalID = setInterval(function () {
@@ -226,3 +258,4 @@ function resetTimer() {
         }
     }, 1000);
 }
+
