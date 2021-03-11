@@ -163,18 +163,24 @@ window.addEventListener('load', function (ev) {
     var highScoreList = document.getElementById('high-score-list');
     submitBtn.addEventListener('click', function () {
         var initAndScore = textInput.value + ' - ' + scoreNum.textContent;
+
+
         var scoreRecord = [];
         if (localStorage.getItem('scoreRecord')) {
             scoreRecord = JSON.parse(localStorage.getItem('scoreRecord'));
         }
-        
-        scoreRecord.unshift(initAndScore);
-        var recordSet = [...new Set(scoreRecord)];
-        localStorage.setItem('scoreRecord', JSON.stringify(recordSet));
 
-        renderHighScores();
+        if (textInput.value.trim() === ''){
+            alert('Please type something!');
+        }else {
+            scoreRecord.unshift(initAndScore);
+            var recordSet = [...new Set(scoreRecord)];
+            localStorage.setItem('scoreRecord', JSON.stringify(recordSet));
 
-        alert("You're all set!");
+            renderHighScores();
+
+            alert("You're all set!");
+        }
     });
 
     var oneMoreTimeBtn = quizSubmit.getElementsByTagName('button')[1];
